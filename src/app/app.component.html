@@ -1,21 +1,28 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Neo App</h1>
+   <div class="container">
+   <mat-toolbar color="primary" class="mat-elevation-z6">
+      <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+      <span>Neo App</span>
   </mat-toolbar>
 
-  <mat-sidenav-container class="example-sidenav-container"
-                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
-      </mat-nav-list>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push" class="uk-card uk-card-default uk-card-body">
+        <div class="uk-width-1-1@s">
+            <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                <li class="uk-nav-header">Menu</li>
+                <li class="uk-parent"><a href="#"><span class="uk-margin-small-right" uk-icon="icon: calendar"></span>Agendamento</a>
+                  <ul class="uk-nav-sub">
+                        <li routerLinkActive="uk-active"><a [routerLink]="['/empreendimentos']"> Novo Agendamento</a></li>
+                        <li><a href="#"> Meus Agendamentos</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </mat-sidenav>
-
     <mat-sidenav-content>
-      <p *ngFor="let content of fillerContent">{{content}}</p>
+        <div class="uk-container">
+          <router-outlet></router-outlet>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+  <!--<mat-toolbar class="footer">Footer</mat-toolbar>-->
 </div>
-
