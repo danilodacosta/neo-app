@@ -6,7 +6,7 @@
         </div>
 
         <div class="uk-width-expand">
-          <a>
+          <a [routerLink]="['/empreendimentos', empreendimento.id]">
           <h4 class="uk-margin-remove-bottom">{{empreendimento.razaoSocial}}</h4>
           <p class="uk-text-meta uk-margin-remove-bottom uk-margin-remove-top"><strong>Endereço:</strong> {{empreendimento.endereco}}</p>
             <p class="uk-text-meta uk-margin-remove-top"><strong>Telefone:</strong> ({{empreendimento.ddd}}){{empreendimento.telefone}} </p>

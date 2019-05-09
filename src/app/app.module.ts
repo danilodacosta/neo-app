@@ -13,14 +13,19 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 import { EmpreendimentosComponent } from './empreendimentos/empreendimentos.component';
 import { EmpreendimentoComponent } from './empreendimentos/empreendimento/empreendimento.component';
 import { HomeComponent } from './home/home.component';
-import { AgendamentosComponent } from './agendamentos/agendamentos.component';
 import { MeusAgendamentosComponent } from './meus-agendamentos/meus-agendamentos.component';
 import { PrestadoresComponent } from './prestadores/prestadores.component';
 import { PrestadorComponent } from './prestadores/prestador/prestador.component';
+import { AgendamentoComponent } from './agendamento/agendamento.component';
+import { ConvenioComponent } from './convenio/convenio.component';
 
 
 @NgModule({
@@ -29,10 +34,12 @@ import { PrestadorComponent } from './prestadores/prestador/prestador.component'
     EmpreendimentosComponent,
     EmpreendimentoComponent,
     HomeComponent,
-    AgendamentosComponent,
     MeusAgendamentosComponent,
     PrestadoresComponent,
-    PrestadorComponent
+    PrestadorComponent,
+    AgendamentoComponent,
+    ConvenioComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,10 @@ import { PrestadorComponent } from './prestadores/prestador/prestador.component'
     MatToolbarModule,
     MatListModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatSelectModule
+
 
   ],
   providers: [],
