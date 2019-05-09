@@ -5,15 +5,22 @@ import { AppComponent } from './app.component';
 
 import { ROUTES } from './app.routes';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 import { EmpreendimentosComponent } from './empreendimentos/empreendimentos.component';
 import { EmpreendimentoComponent } from './empreendimentos/empreendimento/empreendimento.component';
 import { HomeComponent } from './home/home.component';
+import { AgendamentosComponent } from './agendamentos/agendamentos.component';
+import { MeusAgendamentosComponent } from './meus-agendamentos/meus-agendamentos.component';
+import { PrestadoresComponent } from './prestadores/prestadores.component';
+import { PrestadorComponent } from './prestadores/prestador/prestador.component';
 
 
 @NgModule({
@@ -21,18 +28,24 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     EmpreendimentosComponent,
     EmpreendimentoComponent,
-    HomeComponent
+    HomeComponent,
+    AgendamentosComponent,
+    MeusAgendamentosComponent,
+    PrestadoresComponent,
+    PrestadorComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
+    HttpClientModule,
 
     MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [],

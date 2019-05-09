@@ -9,10 +9,14 @@
         <div class="uk-width-1-1@s">
             <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
                 <li class="uk-nav-header">Menu</li>
+                <li class="uk-nav-divider"></li>
+                <li routerLinkActive="uk-active"><a [routerLink]="['/']"><span class="uk-margin-small-right" uk-icon="icon: home"></span> Home</a></li>
+                <li class="uk-nav-divider"></li>
+
                 <li class="uk-parent"><a href="#"><span class="uk-margin-small-right" uk-icon="icon: calendar"></span>Agendamento</a>
                   <ul class="uk-nav-sub">
-                        <li routerLinkActive="uk-active"><a [routerLink]="['/empreendimentos']"> Novo Agendamento</a></li>
-                        <li><a href="#"> Meus Agendamentos</a></li>
+                        <li routerLinkActive="uk-active"><a (click)="sidenav.close()" [routerLink]="['/empreendimentos']"> Novo Agendamento</a></li>
+                        <li routerLinkActive="uk-active"><a (click)="sidenav.close()"[routerLink]="['/meus-agendamentos']"> Meus Agendamentos</a></li>
                     </ul>
                 </li>
             </ul>

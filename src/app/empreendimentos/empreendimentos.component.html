@@ -7,72 +7,21 @@
   </div>
 </div>
 
-<mat-list>
-  <h3 matSubheader>Empreendimentos</h3>
-  <mat-list-item>
-    <mat-icon matListIcon>room</mat-icon>
-    <h4 matLine><strong>Neo Nucleo Integrado de Atendimento</strong></h4>
-    <p matLine class="demo-2"> <strong>Endereço:</strong> Av. Almirante Barroso, 15 (ao lado do terminal rodoviário)
-    </p>
-    <p matLine class="demo-2"> <strong>Telefone:</strong> (91)3236-3535 </p>
-
-    <div uk-lightbox>
-      <a class="uk-link-heading"
-        href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4740.819266853735!2d9.99008871708242!3d53.550454675412404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3f9d24afe84a0263!2sRathaus!5e0!3m2!1sde!2sde!4v1499675200938"
-        data-caption="Neo Nucleo Integrado de Atendimento" data-type="iframe">Ver no Mapa</a>
-    </div>
-
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <mat-icon matListIcon>room</mat-icon>
-    <h4 matLine><strong>Neo Nucleo Integrado de Atendimento</strong></h4>
-    <p matLine class="demo-2"> <strong>Endereço:</strong> Av. Almirante Barroso, 15 (ao lado do terminal rodoviário)
-    </p>
-    <p matLine class="demo-2"> <strong>Telefone:</strong> (91)3236-3535 </p>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <mat-icon matListIcon>room</mat-icon>
-    <h4 matLine><strong>Neo Nucleo Integrado de Atendimento</strong></h4>
-    <p matLine class="demo-2"> <strong>Endereço:</strong> Av. Almirante Barroso, 15 (ao lado do terminal rodoviário)
-    </p>
-    <p matLine class="demo-2"> <strong>Telefone:</strong> (91)3236-3535 </p>
-  </mat-list-item>
-</mat-list>
-
-<div class="uk-card uk-card-default uk-width-1-1@l">
-  <div class="uk-card-header">
-    <div class="uk-grid-small uk-flex-middle" uk-grid>
-      <div class="uk-width-auto">
-        <mat-icon matListIcon>room</mat-icon>
-      </div>
-      <div class="uk-width-expand">
-        <h4 class="uk-margin-remove-bottom">Neo Nucleo Integrado de Atendimento</h4>
-        <p class="uk-text-meta uk-margin-remove-bottom uk-margin-remove-top"><strong>Endereço:</strong> Av. Almirante
-          Barroso, 15 (ao lado do terminal rodoviário) </p>
-        <p class="uk-text-meta uk-margin-remove-top"><strong>Telefone:</strong> (91)3236-3535 </p>
-      </div>
-    </div>
-  </div>
-  <div class="uk-card-header">
-    <div class="uk-grid-small uk-flex-middle" uk-grid>
-      <div class="uk-width-auto">
-        <mat-icon matListIcon>room</mat-icon>
-      </div>
-      <div class="uk-width-expand">
-        <h4 class="uk-margin-remove-bottom">Neo Nucleo Integrado de Atendimento</h4>
-        <p class="uk-text-meta uk-margin-remove-bottom uk-margin-remove-top"><strong>Endereço:</strong> Av. Almirante
-          Barroso, 15 (ao lado do terminal rodoviário) </p>
-        <p class="uk-text-meta uk-margin-remove-top"><strong>Telefone:</strong> (91)3236-3535 </p>
-      </div>
-      <div uk-lightbox>
-          <a class="uk-link-heading"
-            href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4740.819266853735!2d9.99008871708242!3d53.550454675412404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3f9d24afe84a0263!2sRathaus!5e0!3m2!1sde!2sde!4v1499675200938"
-            data-caption="Neo Nucleo Integrado de Atendimento" data-type="iframe">Ver no Mapa</a>
-        </div>
-
-    </div>
-  </div>
-
+<div>
+  <h3 class="uk-heading-line">Empreendimentos</h3>
 </div>
+
+<div *ngIf="!empreendimentos; else listaEmpreendimentos">
+    <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #listaEmpreendimentos>
+    <div *ngFor="let empreendimento of empreendimentos">
+        <app-empreendimento [empreendimento]="empreendimento"></app-empreendimento>
+        <br>
+    </div>
+</ng-template>
+
+
+
+
