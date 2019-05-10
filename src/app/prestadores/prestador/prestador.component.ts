@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Prestador } from '../prestadores.model';
 
 @Component({
   selector: 'app-prestador',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./prestador.component.scss']
 })
 export class PrestadorComponent implements OnInit {
+
+  @Input() prestador: Prestador;
 
   constructor() { }
 

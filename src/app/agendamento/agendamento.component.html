@@ -7,23 +7,25 @@
       uk-scrollspy="cls: uk-animation-slide-left;">
       <div class="uk-card-body">
           <span class="uk-badge">1</span>
-        <h3 class="uk-card-title">Empreendimento</h3>
         <div class="uk-grid-small uk-flex-middle" uk-grid>
           <div class="uk-width-expand">
+              <h3 class="uk-heading-line"><span>Informações do Empreendimento</span></h3>
             <h4 class="uk-margin-remove-bottom">{{empreendimento.razaoSocial}}</h4>
             <p class="uk-text-meta uk-margin-remove-bottom uk-margin-remove-top"><strong>Endereço:</strong>
-              {{empreendimento.endereco}}</p>
+              {{empreendimento.endereco}} - {{empreendimento.numero}} , {{empreendimento.cep}}</p>
+              <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"><strong>Complemento:</strong> {{empreendimento.complemento}} </p>
             <p class="uk-text-meta uk-margin-remove-top"><strong>Bairro:</strong> {{empreendimento.bairro}} </p>
 
-            <hr>
+            <h3 class="uk-heading-line"><span>Contatos</span></h3>
 
             <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"><strong>Telefone:</strong>
               ({{empreendimento.ddd}}){{empreendimento.telefone}} </p>
-            <p class="uk-text-meta uk-margin-remove-top"><strong>Email:</strong> {{empreendimento.email}} </p>
+            <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"><strong>e-mail:</strong> {{empreendimento.email}} </p>
+            <p class="uk-text-meta uk-margin-remove-top"><strong>Website:</strong><a [href]="empreendimento.url"> {{empreendimento.url}}</a></p>
             <div uk-lightbox>
               <a class="uk-link-heading"
                 href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4740.819266853735!2d9.99008871708242!3d53.550454675412404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3f9d24afe84a0263!2sRathaus!5e0!3m2!1sde!2sde!4v1499675200938"
-                data-caption="razaoSocial" data-type="iframe">Ver no Mapa</a>
+                data-caption="razaoSocial" data-type="iframe">Como chegar</a>
             </div>
           </div>
         </div>
@@ -41,7 +43,7 @@
       <div class="uk-card-body">
 
           <span class="uk-badge">2</span>
-        <h3 class="uk-card-title">Especialidades e Convênios</h3>
+          <h3 class="uk-heading-line"><span>Especialidades e Convênios</span></h3>
         <div class="uk-grid-small uk-flex-middle" uk-grid>
           <div class="uk-width-expand">
             <mat-form-field class="uk-width-1-1@l">
@@ -66,41 +68,12 @@
       uk-scrollspy="cls: uk-animation-slide-left;">
       <div class="uk-card-body">
           <span class="uk-badge">3</span>
-        <h3 class="uk-card-title">Prestadores</h3>
+          <h3 class="uk-heading-line"><span>Prestadores</span></h3>
 
-    <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom" uk-scrollspy="cls: uk-animation-slide-left;">
-        <div class="uk-card-body">
-          <div class="uk-grid-small uk-flex-middle" uk-grid>
-              <div class="uk-width-auto">
-                  <img class="uk-comment-avatar" src="http://i1.sndcdn.com/avatars-000434831802-r1tr4j-original.jpg" width="80" height="80" alt="">
-              </div>
 
-            <div class="uk-width-expand">
-                <h3 class="uk-card-title uk-margin-remove-bottom">Dr. João Evandro</h3>
-              <p class="uk-text-meta uk-margin-remove-bottom uk-margin-remove-top"><span style="text-transform: uppercase;color: #999;
-                font-size: .875rem;">Reabilitação Oral</span></p>
-              </div>
-          </div>
+          <div>
+            <app-prestadores (selecionarPrestador)="prestadorSelecionado($event)"></app-prestadores>
         </div>
-       </div>
-       <hr>
-
-         <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom" uk-scrollspy="cls: uk-animation-slide-left;">
-            <div class="uk-card-body">
-              <div class="uk-grid-small uk-flex-middle" uk-grid>
-                  <div class="uk-width-auto">
-                      <img class="uk-comment-avatar" src="http://i1.sndcdn.com/avatars-000434831802-r1tr4j-original.jpg" width="80" height="80" alt="">
-                  </div>
-
-                <div class="uk-width-expand">
-                    <h3 class="uk-card-title uk-margin-remove-bottom">Dr. João Evandro</h3>
-                  <p class="uk-text-meta uk-margin-remove-bottom uk-margin-remove-top"><span style="text-transform: uppercase;color: #999;
-                    font-size: .875rem;">Reabilitação Oral</span></p>
-                  </div>
-                  <img class="uk-comment-avatar" src="http://i1.sndcdn.com/avatars-000434831802-r1tr4j-original.jpg" width="80" height="80" alt="">
-              </div>
-            </div>
-           </div>
        </div>
     </div>
   </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Prestador } from './prestadores.model';
+
 
 @Component({
   selector: 'app-prestadores',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrestadoresComponent implements OnInit {
 
+  @Input() prestador: Prestador;
+  @Output() selecionarPrestador = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public emitAddEvent(): void {
+    this.selecionarPrestador.emit(this.prestador);
   }
 
 }
