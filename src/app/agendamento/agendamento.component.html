@@ -56,7 +56,7 @@
             </mat-form-field>
           </div>
           <div class="uk-width-expand">
-            <app-convenio></app-convenio>
+            <app-convenio (selecionarConvenio)="selecionarConvenio($event)" ></app-convenio>
           </div>
         </div>
       </div>
@@ -70,9 +70,12 @@
           <span class="uk-badge">3</span>
           <h3 class="uk-heading-line"><span>Prestadores</span></h3>
 
+          <div *ngIf="prestadores">
 
-          <div>
-            <app-prestadores (selecionarPrestador)="prestadorSelecionado($event)"></app-prestadores>
+            <div *ngFor="let prestador of prestadores">
+                <app-prestadores [prestador]="prestador" (selecionarPrestador)="prestadorSelecionado($event)"></app-prestadores>
+            </div>
+
         </div>
        </div>
     </div>

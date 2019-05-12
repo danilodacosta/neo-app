@@ -1,7 +1,8 @@
 <mat-form-field class="uk-width-1-1@l">
     <mat-label>Convênio</mat-label>
-    <mat-select [(value)]="convenioSelecionado">
-      <mat-option *ngFor="let convenio of convenios" [value]="convenio.nome">
+    <mat-select [(value)]="convenioSelecionado"
+    (selectionChange)="emitAddEvent()">
+      <mat-option *ngFor="let convenio of convenios" [value]="convenio">
         {{convenio.nome}}
       </mat-option>
     </mat-select>

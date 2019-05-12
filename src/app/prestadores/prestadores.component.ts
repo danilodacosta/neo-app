@@ -15,6 +15,7 @@ export class PrestadoresComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('prestador : ' +this.prestador);
   }
 
   public emitAddEvent(): void {

@@ -3,11 +3,11 @@
        <div class="uk-card-body">
          <div class="uk-grid-small uk-flex-middle" uk-grid>
              <div class="uk-width-auto">
-                 <img class="uk-border-pill" [src]="prestador?.uriFoto" width="50" height="50" [alt]="prestador.nome">
+                 <img class="uk-border-pill" [src]="prestador?.uriFoto" width="80" height="80" [alt]="prestador.nome">
              </div>
 
            <div class="uk-width-expand">
-               <h3 class="uk-card-title uk-margin-remove-bottom">{{prestador.tratamento}} - {{prestador.nome}}</h3>
+               <h3 class="uk-card-title uk-margin-remove-bottom">{{prestador.tratamento}} {{prestador.nome}}</h3>
              <p class="uk-text-meta uk-margin-remove-bottom uk-margin-remove-top"><span style="text-transform: uppercase;color: #999;
                font-size: .875rem;">{{ prestador.tipoEspecialidade }}</span></p>
              </div>
@@ -15,5 +15,4 @@
        </div>
       </div>
       </a>
-
-      <br>
+ <br>

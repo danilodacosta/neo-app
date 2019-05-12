@@ -47,11 +47,12 @@ export class AgendamentoComponent implements OnInit {
       });
   }
 
-  private consultarPrestadores(): void {
+  private consultarPrestadores(convenio: Convenio): void {
     const empreendimentoId = this.route.snapshot.params['id'];
-    this.prestadorService.prestadores(empreendimentoId, this.convenio.id)
+    this.prestadorService.prestadores(empreendimentoId, convenio.id)
     .subscribe(prestadores => {
       this.prestadores = prestadores;
+
     });
 
 }
@@ -61,7 +62,7 @@ public prestadorSelecionado(prestador: Prestador): void {
 }
 
 public selecionarConvenio(convenio: Convenio): void {
-  console.log('convenio Selecionado : ' + convenio);
+  this.consultarPrestadores(convenio);
 }
 
 }

@@ -1,6 +1,6 @@
 import { ConvenioService } from './convenio.service';
 import { Convenio } from './convenio.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-convenio',
@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   providers: [ConvenioService]
 })
 export class ConvenioComponent implements OnInit {
+
+  @Output() selecionarConvenio = new EventEmitter();
 
   constructor(private convenioService: ConvenioService) { }
 
@@ -19,9 +21,11 @@ export class ConvenioComponent implements OnInit {
     this.convenioService.convenios()
     .subscribe(convenios => {
       this.convenios = convenios;
-      this.convenioSelecionado = this.convenios[0];
-
     });
+  }
+
+  public emitAddEvent(): void {
+    this.selecionarConvenio.emit(this.convenioSelecionado);
   }
 
 }
