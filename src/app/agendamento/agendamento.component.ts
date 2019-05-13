@@ -1,3 +1,4 @@
+import { DateFormatPipe } from './../shared/DateFormatPipe.pipe';
 import { Convenio } from './../convenio/convenio.model';
 import { Prestador } from './../prestadores/prestadores.model';
 import { Empreendimento } from './../empreendimentos/empreendimento/empreendimento.model';
@@ -6,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PrestadorService } from '../prestadores/prestadores.service';
 
+
 @Component({
   selector: 'app-agendamento',
   templateUrl: './agendamento.component.html',
   styleUrls: ['./agendamento.component.scss'],
-  providers: [EmpreendimentoService, PrestadorService]
+  providers: [EmpreendimentoService, PrestadorService, DateFormatPipe]
 })
 export class AgendamentoComponent implements OnInit {
   public empreendimento: Empreendimento;
@@ -18,11 +20,13 @@ export class AgendamentoComponent implements OnInit {
   public prestadores: Array<Prestador>;
   public especialidadeSelecionada: string;
   public convenio: Convenio;
+  public jsonConsultaHorarios: any = new Object;
 
   constructor(
     private empreendimentoService: EmpreendimentoService,
     private route: ActivatedRoute,
-    private prestadorService: PrestadorService
+    private prestadorService: PrestadorService,
+    private dateFomartPipe: DateFormatPipe
   ) {}
 
   ngOnInit() {
@@ -58,7 +62,24 @@ export class AgendamentoComponent implements OnInit {
 }
 
 public prestadorSelecionado(prestador: Prestador): void {
-  console.log('prestador Selecionado : ' + prestador);
+    this.jsonConsultaHorarios = new Object;
+    this.jsonConsultaHorarios.Prestador = prestador.id.toString();
+    this.jsonConsultaHorarios.Empreendimento = this.route.snapshot.params['id'];
+    this.jsonConsultaHorarios.DataInicial = this.dateFomartPipe.transform(new Date());
+    this.jsonConsultaHorarios.DataFinal = this.dateFomartPipe.transform(this.calcularProximosDias());
+    this.jsonConsultaHorarios.TipoAgenda = '0';
+    this.jsonConsultaHorarios.QuantReg = '0';
+    this.jsonConsultaHorarios.Hora = '';
+    this.jsonConsultaHorarios.HoraPeriodo = '';
+
+    console.log(this.jsonConsultaHorarios);
+}
+
+private calcularProximosDias(): Date {
+  const data = new Date();
+  const novaData = new Date();
+  novaData.setDate(data.getDate() + 30);
+  return novaData;
 }
 
 public selecionarConvenio(convenio: Convenio): void {

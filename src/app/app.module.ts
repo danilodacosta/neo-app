@@ -1,3 +1,4 @@
+import { DateFormatPipe } from './shared/DateFormatPipe.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,6 +27,7 @@ import { PrestadoresComponent } from './prestadores/prestadores.component';
 import { PrestadorComponent } from './prestadores/prestador/prestador.component';
 import { AgendamentoComponent } from './agendamento/agendamento.component';
 import { ConvenioComponent } from './convenio/convenio.component';
+import { HorariosDisponiveisComponent } from './horarios-disponiveis/horarios-disponiveis.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { ConvenioComponent } from './convenio/convenio.component';
     PrestadorComponent,
     AgendamentoComponent,
     ConvenioComponent,
+    DateFormatPipe,
+    HorariosDisponiveisComponent
 
   ],
   imports: [
@@ -55,7 +59,6 @@ import { ConvenioComponent } from './convenio/convenio.component';
     MatProgressSpinnerModule,
     MatTabsModule,
     MatSelectModule
-
 
   ],
   providers: [],
