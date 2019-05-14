@@ -2,7 +2,7 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<div class="uk-container">
+<!--<div class="uk-container">
 <div class="uk-text-center uk-width-1-1@l">
     <div class="uk-card uk-card-default uk-card-body" uk-grid>
     <div class="uk-width-1-2@l">
@@ -20,11 +20,10 @@
         </div>
     </div>
   </div>
-</div>
-
+</div>-->
 
 <ng-template #empreendimentoSelecionado>
-  <div class="uk-container">
+  <div class="uk-container" class="main-container">
     <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom"
       uk-scrollspy="cls: uk-animation-slide-left;">
       <div class="uk-card-body">
@@ -88,13 +87,30 @@
     </div>
 
     <br>
-    <div *ngIf="prestadores">
+
+    <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom"
+    uk-scrollspy="cls: uk-animation-slide-right;">
+    <div class="uk-card-body">
+
       <span class="uk-badge">3</span>
       <h3 class="uk-heading-line"><span>Prestadores</span></h3>
-      <div *ngFor="let prestador of prestadores">
-        <app-prestadores [prestador]="prestador" (selecionarPrestador)="prestadorSelecionado($event)"></app-prestadores>
-      </div>
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
 
-    </div>
+    <div *ngIf="prestadores">
+        <div *ngFor="let prestador of prestadores">
+          <app-prestadores [prestador]="prestador" (selecionarPrestador)="prestadorSelecionado($event)"></app-prestadores>
+        </div>
+        <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom">
+        <mat-tab-group>
+            <mat-tab label="First">  01/06 </mat-tab>
+            <mat-tab label="Second"> 01/07 </mat-tab>
+            <mat-tab label="Third">  01/08 </mat-tab>
+            <mat-tab label="Third">  01/09 </mat-tab>
+        </mat-tab-group>
+      </div>
+      </div>
+   </div>
+   </div>
+  </div>
   </div>
 </ng-template>

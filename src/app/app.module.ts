@@ -28,6 +28,7 @@ import { PrestadorComponent } from './prestadores/prestador/prestador.component'
 import { AgendamentoComponent } from './agendamento/agendamento.component';
 import { ConvenioComponent } from './convenio/convenio.component';
 import { HorariosDisponiveisComponent } from './horarios-disponiveis/horarios-disponiveis.component';
+import { AgendamentoService } from './agendamento/agendamento.service';
 
 
 @NgModule({
@@ -61,7 +62,7 @@ import { HorariosDisponiveisComponent } from './horarios-disponiveis/horarios-di
     MatSelectModule
 
   ],
-  providers: [],
+  providers: [AgendamentoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

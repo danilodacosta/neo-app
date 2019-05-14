@@ -1,3 +1,5 @@
+import { AgendamentoService } from './agendamento.service';
+import { Agendamento } from './agendamento.model';
 import { DateFormatPipe } from './../shared/DateFormatPipe.pipe';
 import { Convenio } from './../convenio/convenio.model';
 import { Prestador } from './../prestadores/prestadores.model';
@@ -21,12 +23,14 @@ export class AgendamentoComponent implements OnInit {
   public especialidadeSelecionada: string;
   public convenio: Convenio;
   public jsonConsultaHorarios: any = new Object;
+  public agendamento: Agendamento;
 
   constructor(
     private empreendimentoService: EmpreendimentoService,
     private route: ActivatedRoute,
     private prestadorService: PrestadorService,
-    private dateFomartPipe: DateFormatPipe
+    private dateFomartPipe: DateFormatPipe,
+    private agendamentoService: AgendamentoService
   ) {}
 
   ngOnInit() {
@@ -58,21 +62,25 @@ export class AgendamentoComponent implements OnInit {
       this.prestadores = prestadores;
 
     });
+}
 
+public selecionarConvenio(convenio: Convenio): void {
+  this.consultarPrestadores(convenio);
 }
 
 public prestadorSelecionado(prestador: Prestador): void {
-    this.jsonConsultaHorarios = new Object;
-    this.jsonConsultaHorarios.Prestador = prestador.id.toString();
-    this.jsonConsultaHorarios.Empreendimento = this.route.snapshot.params['id'];
-    this.jsonConsultaHorarios.DataInicial = this.dateFomartPipe.transform(new Date());
-    this.jsonConsultaHorarios.DataFinal = this.dateFomartPipe.transform(this.calcularProximosDias());
-    this.jsonConsultaHorarios.TipoAgenda = '0';
-    this.jsonConsultaHorarios.QuantReg = '0';
-    this.jsonConsultaHorarios.Hora = '';
-    this.jsonConsultaHorarios.HoraPeriodo = '';
 
-    console.log(this.jsonConsultaHorarios);
+  //  this.jsonConsultaHorarios = new Object;
+  this.agendamento = new Agendamento(
+  this.dateFomartPipe.transform(new Date()),
+  this.dateFomartPipe.transform(this.calcularProximosDias()),
+  this.route.snapshot.params['id'], '' , '', prestador.id.toString(), '0', '0');
+
+  //this.agendamentoService.setAgendamento(this.agendamento);
+
+  //console.log( this.agendamentoService.getAgendamento);
+
+
 }
 
 private calcularProximosDias(): Date {
@@ -82,8 +90,6 @@ private calcularProximosDias(): Date {
   return novaData;
 }
 
-public selecionarConvenio(convenio: Convenio): void {
-  this.consultarPrestadores(convenio);
-}
+
 
 }
