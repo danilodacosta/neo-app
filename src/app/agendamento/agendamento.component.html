@@ -1,116 +1,64 @@
-<div *ngIf="!empreendimento; else empreendimentoSelecionado">
-  <mat-spinner></mat-spinner>
+<div class="uk-clearfix uk-visible@m">
+  <div class="uk-float-right">
+    <ul class="uk-breadcrumb ">
+      <li [routerLink]="['/empreendimentos']"><span>Empreendimentos</span></li>
+      <li [routerLink]="['/empreendimentos', agendamento?.Empreendimento]"><span>Prestadores</span></li>
+      <li><span>Agendamento</span></li>
+    </ul>
+  </div>
 </div>
 
-<!--<div class="uk-container">
-<div class="uk-text-center uk-width-1-1@l">
-    <div class="uk-card uk-card-default uk-card-body" uk-grid>
-    <div class="uk-width-1-2@l">
-        <h3 class="uk-heading-line"><span>Prestadores</span></h3>
-    </div>
-    <div class="uk-width-1-2@l">
-        <h3 class="uk-heading-line"><span>Horarios Disponiveis</span></h3>
-            <mat-tab-group>
-                <mat-tab label="First">  01/06 </mat-tab>
-                <mat-tab label="Second"> 01/07 </mat-tab>
-                <mat-tab label="Third">  01/08 </mat-tab>
-                <mat-tab label="Third">  01/09 </mat-tab>
-            </mat-tab-group>
 
-        </div>
-    </div>
-  </div>
-</div>-->
 
-<ng-template #empreendimentoSelecionado>
-  <div class="uk-container" class="main-container">
-    <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom"
-      uk-scrollspy="cls: uk-animation-slide-left;">
-      <div class="uk-card-body">
-        <span class="uk-badge">1</span>
+
+<div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom"
+  uk-scrollspy="cls: uk-animation-slide-left;">
+  <div class="uk-card-body">
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+      <div class="uk-width-expand">
+        <h3 class="uk-heading-line"><span>Sua Consulta</span></h3>
+
         <div class="uk-grid-small uk-flex-middle" uk-grid>
-          <div class="uk-width-expand">
-            <h3 class="uk-heading-line"><span>Informações do Empreendimento</span></h3>
-            <h4 class="uk-margin-remove-bottom">{{empreendimento.razaoSocial}}</h4>
-            <p class="uk-text-meta uk-margin-remove-bottom uk-margin-remove-top"><strong>Endereço:</strong>
-              {{empreendimento.endereco}} - {{empreendimento.numero}} , {{empreendimento.cep}}</p>
-            <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"><strong>Complemento:</strong>
-              {{empreendimento.complemento}} </p>
-            <p class="uk-text-meta uk-margin-remove-top"><strong>Bairro:</strong> {{empreendimento.bairro}} </p>
-
-            <h3 class="uk-heading-line"><span>Contatos</span></h3>
-
-            <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"><strong>Telefone:</strong>
-              ({{empreendimento.ddd}}){{empreendimento.telefone}} </p>
-            <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"><strong>e-mail:</strong>
-              {{empreendimento.email}} </p>
-            <p class="uk-text-meta uk-margin-remove-top"><strong>Website:</strong><a [href]="empreendimento.url">
-                {{empreendimento.url}}</a></p>
-            <div uk-lightbox>
-              <a class="uk-link-heading"
-                href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4740.819266853735!2d9.99008871708242!3d53.550454675412404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3f9d24afe84a0263!2sRathaus!5e0!3m2!1sde!2sde!4v1499675200938"
-                data-caption="razaoSocial" data-type="iframe">Como chegar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-    </div>
-
-
-    <hr>
-
-    <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom"
-      uk-scrollspy="cls: uk-animation-slide-right;">
-      <div class="uk-card-body">
-
-        <span class="uk-badge">2</span>
-        <h3 class="uk-heading-line"><span>Especialidades e Convênios</span></h3>
-        <div class="uk-grid-small uk-flex-middle" uk-grid>
-          <div class="uk-width-expand">
-            <mat-form-field class="uk-width-1-1@l">
-              <mat-label>Especialidade</mat-label>
-              <mat-select [(value)]="especialidadeSelecionada">
-                <mat-option *ngFor="let especialidade of especialidades" [value]="especialidade">
-                  {{especialidade.nome}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+          <div class="uk-width-auto">
+            <img class="uk-border-circle"
+              src="https://firebasestorage.googleapis.com/v0/b/agenda-25f4d.appspot.com/o/Dr%20Jo%C3%A3o%20Evandro.jpg?alt=media&token=801a18c2-bc75-4a17-98f1-8f7cb2575651"
+              width="80" height="80">
           </div>
           <div class="uk-width-expand">
-            <app-convenio (selecionarConvenio)="selecionarConvenio($event)"></app-convenio>
+            <h3 class="uk-card-title uk-margin-remove-bottom">Dr. João Evandro</h3>
+            <p class="uk-text-meta uk-margin-remove-top">
+              <span class="uk-text-middle"><strong>Especialidade :</strong> REABILITAÇÃO ORAL</span>
+            </p>
           </div>
         </div>
-      </div>
-    </div>
+        <br>
+        <span class="uk-margin-small-right uk-icon" uk-icon="location"></span>Localização
+        <hr>
+        <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"><strong>Núcleo Integrado de Odontologia</strong></p>
+        <p class="uk-margin-remove-top uk-margin-remove-bottom"> Edifício Metropolitan Tower, Rua dos Mundurucus 3100 - Sala 101 , Cremação - 66040-640 </p>
 
-    <br>
-
-    <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom"
-    uk-scrollspy="cls: uk-animation-slide-right;">
-    <div class="uk-card-body">
-
-      <span class="uk-badge">3</span>
-      <h3 class="uk-heading-line"><span>Prestadores</span></h3>
-      <div class="uk-grid-small uk-flex-middle" uk-grid>
-
-    <div *ngIf="prestadores">
-        <div *ngFor="let prestador of prestadores">
-          <app-prestadores [prestador]="prestador" (selecionarPrestador)="prestadorSelecionado($event)"></app-prestadores>
-        </div>
-        <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom">
-        <mat-tab-group>
-            <mat-tab label="First">  01/06 </mat-tab>
-            <mat-tab label="Second"> 01/07 </mat-tab>
-            <mat-tab label="Third">  01/08 </mat-tab>
-            <mat-tab label="Third">  01/09 </mat-tab>
+        <br>
+        <span class="uk-margin-small-right uk-icon" uk-icon="clock"></span>Horários Disponíveis
+        <hr>
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="01-06-2019">
+                <mat-chip-list>
+                    <mat-chip color="primary" selected>10:05</mat-chip>
+                    <mat-chip color="primary">12:05</mat-chip>
+                    <mat-chip color="primary" >01:05</mat-chip>
+                    <mat-chip color="primary" >02:30</mat-chip>
+                  </mat-chip-list>
+             </mat-tab>
+            <mat-tab label="01-07-2019">  <button class="uk-button uk-button-primary">Primary</button> </mat-tab>
+            <mat-tab label="01-08-2019">  <button class="uk-button uk-button-primary">Primary</button> </mat-tab>
+            <mat-tab label="01-09-2019">  <button class="uk-button uk-button-primary">Primary</button> </mat-tab>
+            <mat-tab label="01-10-2019">  <button class="uk-button uk-button-primary">Primary</button> </mat-tab>
+            <mat-tab label="01-10-2019">  <button class="uk-button uk-button-primary">Primary</button> </mat-tab>
         </mat-tab-group>
       </div>
-      </div>
-   </div>
-   </div>
+    </div>
   </div>
-  </div>
-</ng-template>
+
+
+
+</div>

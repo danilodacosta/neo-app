@@ -1,22 +1,23 @@
-import { AgendamentoService } from './agendamento.service';
-import { Agendamento } from './agendamento.model';
-import { DateFormatPipe } from './../shared/DateFormatPipe.pipe';
+import { AgendamentoService } from './../agendamento/agendamento.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Agendamento } from './../agendamento/agendamento.model';
 import { Convenio } from './../convenio/convenio.model';
-import { Prestador } from './../prestadores/prestadores.model';
+import { Component, OnInit } from '@angular/core';
+
 import { Empreendimento } from './../empreendimentos/empreendimento/empreendimento.model';
 import { EmpreendimentoService } from './../empreendimentos/empreendimentos.service';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { PrestadorService } from '../prestadores/prestadores.service';
-
+import { DateFormatPipe } from './../shared/DateFormatPipe.pipe';
+import { Prestador } from '../prestadores/prestadores.model';
 
 @Component({
-  selector: 'app-agendamento',
-  templateUrl: './agendamento.component.html',
-  styleUrls: ['./agendamento.component.scss'],
+  selector: 'app-empreendimento-detalhe',
+  templateUrl: './empreendimento-detalhe.component.html',
+  styleUrls: ['./empreendimento-detalhe.component.scss'],
   providers: [EmpreendimentoService, PrestadorService, DateFormatPipe]
 })
-export class AgendamentoComponent implements OnInit {
+export class EmpreendimentoDetalheComponent implements OnInit {
+
   public empreendimento: Empreendimento;
   public especialidades: Array<any>;
   public prestadores: Array<Prestador>;
@@ -25,20 +26,20 @@ export class AgendamentoComponent implements OnInit {
   public jsonConsultaHorarios: any = new Object;
   public agendamento: Agendamento;
 
+  public consultandoPrestador = false;
+
   constructor(
     private empreendimentoService: EmpreendimentoService,
     private route: ActivatedRoute,
     private prestadorService: PrestadorService,
     private dateFomartPipe: DateFormatPipe,
-    private agendamentoService: AgendamentoService
+    private agendamentoService: AgendamentoService,
+    private router: Router
   ) {}
 
   ngOnInit() {
-
-    this.agendamento = this.agendamentoService.getAgendamento();
-
-    //this.consultarEmpreendimento();
-    //this.consultarEspecialidades();
+    this.consultarEmpreendimento();
+    this.consultarEspecialidades();
   }
 
   private consultarEmpreendimento(): void {
@@ -59,11 +60,12 @@ export class AgendamentoComponent implements OnInit {
   }
 
   private consultarPrestadores(convenio: Convenio): void {
+    this.consultandoPrestador = true;
     const empreendimentoId = this.route.snapshot.params['id'];
     this.prestadorService.prestadores(empreendimentoId, convenio.id)
     .subscribe(prestadores => {
       this.prestadores = prestadores;
-
+      this.consultandoPrestador = false;
     });
 }
 
@@ -78,10 +80,8 @@ public prestadorSelecionado(prestador: Prestador): void {
   this.dateFomartPipe.transform(new Date()),
   this.dateFomartPipe.transform(this.calcularProximosDias()),
   this.route.snapshot.params['id'], '' , '', prestador.id.toString(), '0', '0');
-
   this.agendamentoService.setAgendamento(this.agendamento);
-
-  console.log( this.agendamentoService.getAgendamento());
+  this.router.navigate(['/agendamento']);
 
 
 }
@@ -92,6 +92,7 @@ private calcularProximosDias(): Date {
   novaData.setDate(data.getDate() + 30);
   return novaData;
 }
+
 
 
 

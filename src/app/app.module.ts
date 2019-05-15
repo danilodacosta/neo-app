@@ -16,7 +16,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatChipsModule} from '@angular/material/chips';
 
 
 import { EmpreendimentosComponent } from './empreendimentos/empreendimentos.component';
@@ -29,6 +29,8 @@ import { AgendamentoComponent } from './agendamento/agendamento.component';
 import { ConvenioComponent } from './convenio/convenio.component';
 import { HorariosDisponiveisComponent } from './horarios-disponiveis/horarios-disponiveis.component';
 import { AgendamentoService } from './agendamento/agendamento.service';
+import { HorariosService } from './horarios-disponiveis/horarios.service';
+import { EmpreendimentoDetalheComponent } from './empreendimento-detalhe/empreendimento-detalhe.component';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { AgendamentoService } from './agendamento/agendamento.service';
     AgendamentoComponent,
     ConvenioComponent,
     DateFormatPipe,
-    HorariosDisponiveisComponent
+    HorariosDisponiveisComponent,
+    EmpreendimentoDetalheComponent
 
   ],
   imports: [
@@ -59,10 +62,11 @@ import { AgendamentoService } from './agendamento/agendamento.service';
     MatIconModule,
     MatProgressSpinnerModule,
     MatTabsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule
 
   ],
-  providers: [AgendamentoService],
+  providers: [AgendamentoService, HorariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
