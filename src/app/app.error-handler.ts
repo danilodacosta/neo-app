@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 export class ErrorHandler {
 
@@ -10,7 +11,7 @@ export class ErrorHandler {
     } else {
       errorMessage = error.toString();
     }
-    alert(`${errorMessage}`);
+    Swal.fire('', `${errorMessage}`, 'error');
     return throwError(errorMessage);
   }
 }
