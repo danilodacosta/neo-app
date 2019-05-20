@@ -80,9 +80,10 @@ public prestadorSelecionado(prestador: Prestador): void {
 
   //  this.jsonConsultaHorarios = new Object;
   this.agendamento = new Agendamento(
+  this.route.snapshot.params['id'],prestador.id.toString(),
   this.dateFomartPipe.transform(new Date()),
   this.dateFomartPipe.transform(this.calcularProximosDias()),
-  this.route.snapshot.params['id'], '' , '', prestador.id.toString(), '0', '0');
+  '1', ' ', '0', ' ', ' ');
 
   this.agendamentoService.setAgendamento(this.agendamento, prestador, this.convenioSelecionado);
   this.router.navigate(['/agendamento']);
