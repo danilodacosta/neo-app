@@ -19,4 +19,13 @@ export class PrestadorService {
       catchError(ErrorHandler.handleError)
     );
   }
+
+  public prestadorById(idPrestador: number)  {
+    return this.http.get<Prestador>(`${AGE_API}/Prestadores/Consultar/${idPrestador}`)
+    .pipe (
+      map(resposta => JSON.parse(resposta.toString()).classe),
+      retry(3),
+      catchError(ErrorHandler.handleError)
+    );
+  }
 }

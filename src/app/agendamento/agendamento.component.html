@@ -7,57 +7,63 @@
     </ul>
   </div>
 </div>
-
-
-
-
-<div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover uk-margin-remove-bottom"
+<h3 class="uk-heading-line"><span>Informações da Consulta</span></h3>
+<div id="informacaoConsulta" class="uk-card uk-card-default uk-width-1-1@l uk-card-hover"
   uk-scrollspy="cls: uk-animation-slide-left;">
   <div class="uk-card-body">
     <div class="uk-grid-small uk-flex-middle" uk-grid>
       <div class="uk-width-expand">
-        <h3 class="uk-heading-line"><span>Informações da Consulta</span></h3>
-
+        <span class="uk-margin-small-right uk-icon" uk-icon="user"></span>Prestador
+        <hr>
+        <br>
         <div class="uk-grid-small uk-flex-middle" uk-grid>
           <div class="uk-width-auto">
             <img class="uk-border-circle"
-              src="https://firebasestorage.googleapis.com/v0/b/agenda-25f4d.appspot.com/o/Dr%20Jo%C3%A3o%20Evandro.jpg?alt=media&token=801a18c2-bc75-4a17-98f1-8f7cb2575651"
+              [src]="prestador?.uriFoto"
               width="80" height="80">
           </div>
           <div class="uk-width-expand">
-            <h3 class="uk-card-title uk-margin-remove-bottom">Dr. João Evandro</h3>
+            <h3 class="uk-card-title uk-margin-remove-bottom">{{prestador?.tratamento}} {{prestador?.nome}}</h3>
             <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom">
-              <span class="uk-text-middle"><strong>Especialidade :</strong> REABILITAÇÃO ORAL</span>
+              <span class="uk-text-middle"><strong>Especialidade :</strong> {{prestador?.tipoEspecialidade | uppercase}}</span>
             </p>
           </div>
         </div>
         <br>
         <br>
+      </div>
 
+    </div>
+  </div>
+</div>
+
+<div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover"
+  uk-scrollspy="cls: uk-animation-slide-left;">
+  <div class="uk-card-body">
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+      <div class="uk-width-expand">
         <span class="uk-margin-small-right uk-icon" uk-icon="location"></span>Localização
         <hr>
-        <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"><strong>Núcleo Integrado de Odontologia</strong></p>
-        <p class="uk-margin-remove-top uk-margin-remove-bottom"> Edifício Metropolitan Tower, Rua dos Mundurucus 3100 - Sala 101 , Cremação - 66040-640 </p>
-
+        <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"><strong>{{empreendimento?.razaoSocial}}</strong></p>
+        <p class="uk-margin-remove-top uk-margin-remove-bottom"> {{empreendimento?.endereco}} {{empreendimento?. numero}} - {{empreendimento?.complemento}} , {{empreendimento?.bairro}} - {{empreendimento?.cep}} </p>
         <br>
         <span class="uk-margin-small-right uk-icon" uk-icon="credit-card"></span>Convênio
         <hr>
-
+        <br>
         <img class="uk-border-circle"
-        src="https://firebasestorage.googleapis.com/v0/b/agenda-25f4d.appspot.com/o/Uniodonto.jpg?alt=media&token=fbe9dd3e-b66d-46ae-983a-2c3a4eb69977"
+        [src]="convenio?.uriFoto"
         width="200" height="200">
         <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom">
-            <span class="uk-text-middle"><strong>Convênio Selecionado :</strong> UNIODONTO</span>
-          </p>
-        <br>
+          <span class="uk-text-middle"><strong>Convênio Selecionado :</strong> {{convenio.nome | uppercase}}</span>
+        </p>
         <br>
         <span class="uk-margin-small-right uk-icon" uk-icon="clock"></span>Horários Disponíveis
         <hr>
         <mat-tab-group mat-align-tabs="center">
             <mat-tab label="01-06-2019">
                 <mat-chip-list>
-                    <mat-chip color="primary" selected>10:05</mat-chip>
-                    <mat-chip color="primary">12:05</mat-chip>
+                    <mat-chip color="primary" selected=false>10:05</mat-chip>
+                    <mat-chip color="primary" selected=true>12:05</mat-chip>
                     <mat-chip color="primary" >01:05</mat-chip>
                     <mat-chip color="primary" >02:30</mat-chip>
                   </mat-chip-list>
@@ -69,6 +75,7 @@
             <mat-tab label="01-10-2019">  <button class="uk-button uk-button-primary">Primary</button> </mat-tab>
         </mat-tab-group>
       </div>
+
     </div>
   </div>
 

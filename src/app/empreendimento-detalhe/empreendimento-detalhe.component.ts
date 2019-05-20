@@ -14,7 +14,7 @@ import { Prestador } from '../prestadores/prestadores.model';
   selector: 'app-empreendimento-detalhe',
   templateUrl: './empreendimento-detalhe.component.html',
   styleUrls: ['./empreendimento-detalhe.component.scss'],
-  providers: [EmpreendimentoService, PrestadorService, DateFormatPipe]
+  providers: [DateFormatPipe]
 })
 export class EmpreendimentoDetalheComponent implements OnInit {
 
@@ -25,6 +25,7 @@ export class EmpreendimentoDetalheComponent implements OnInit {
   public convenio: Convenio;
   public jsonConsultaHorarios: any = new Object;
   public agendamento: Agendamento;
+  public convenioSelecionado: Convenio;
 
   public consultandoPrestador = false;
 
@@ -60,6 +61,7 @@ export class EmpreendimentoDetalheComponent implements OnInit {
   }
 
   private consultarPrestadores(convenio: Convenio): void {
+    this.convenioSelecionado = convenio;
     this.consultandoPrestador = true;
     const empreendimentoId = this.route.snapshot.params['id'];
     this.prestadorService.prestadores(empreendimentoId, convenio.id)
@@ -71,6 +73,7 @@ export class EmpreendimentoDetalheComponent implements OnInit {
 
 public selecionarConvenio(convenio: Convenio): void {
   this.consultarPrestadores(convenio);
+
 }
 
 public prestadorSelecionado(prestador: Prestador): void {
@@ -80,10 +83,9 @@ public prestadorSelecionado(prestador: Prestador): void {
   this.dateFomartPipe.transform(new Date()),
   this.dateFomartPipe.transform(this.calcularProximosDias()),
   this.route.snapshot.params['id'], '' , '', prestador.id.toString(), '0', '0');
-  this.agendamentoService.setAgendamento(this.agendamento);
+
+  this.agendamentoService.setAgendamento(this.agendamento, prestador, this.convenioSelecionado);
   this.router.navigate(['/agendamento']);
-
-
 }
 
 private calcularProximosDias(): Date {

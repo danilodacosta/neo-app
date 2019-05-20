@@ -1,3 +1,4 @@
+import { EmpreendimentoService } from './empreendimentos/empreendimentos.service';
 import { DateFormatPipe } from './shared/DateFormatPipe.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -31,6 +32,7 @@ import { HorariosDisponiveisComponent } from './horarios-disponiveis/horarios-di
 import { AgendamentoService } from './agendamento/agendamento.service';
 import { HorariosService } from './horarios-disponiveis/horarios.service';
 import { EmpreendimentoDetalheComponent } from './empreendimento-detalhe/empreendimento-detalhe.component';
+import { PrestadorService } from './prestadores/prestadores.service';
 
 
 @NgModule({
@@ -66,7 +68,7 @@ import { EmpreendimentoDetalheComponent } from './empreendimento-detalhe/empreen
     MatChipsModule
 
   ],
-  providers: [AgendamentoService, HorariosService],
+  providers: [AgendamentoService, HorariosService , EmpreendimentoService, PrestadorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

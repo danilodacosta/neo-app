@@ -12,8 +12,6 @@ export class EmpreendimentoService {
   constructor(private http: HttpClient) {}
 
   public empreendimentos()  {
-
-    console.log(`${AGE_API}/Empreendimentos/Consultar`);
     return this.http.get<Empreendimento[]>(`${AGE_API}/Empreendimentos/Consultar`)
     .pipe (
       map(resposta => JSON.parse(resposta.toString()).classe.empreendimentos),
@@ -23,7 +21,6 @@ export class EmpreendimentoService {
   }
 
   public empreendimentoById(id: number) {
-    console.log(`${AGE_API}/Empreendimentos/Consultar/${id}`)
     return this.http.get<Empreendimento>(`${AGE_API}/Empreendimentos/Consultar/${id}`)
     .pipe (
       map(resposta => JSON.parse(resposta.toString()).classe.empreendimentos),
